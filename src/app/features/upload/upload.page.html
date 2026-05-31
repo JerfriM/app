@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Subida de Archivos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Seleccionar Archivo</ion-card-title>
+      <ion-card-subtitle>Imágenes o documentos</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <!-- Botón seleccionar -->
+      <ion-button expand="block" fill="outline" onclick="document.getElementById('fileInput').click()">
+        <ion-icon slot="start" name="attach-outline"></ion-icon>
+        Seleccionar Archivo
+      </ion-button>
+      <input
+        id="fileInput"
+        type="file"
+        accept="image/*,.pdf,.doc,.docx"
+        style="display:none"
+        (change)="seleccionarArchivo($event)"
+      />
+
+      <!-- Info del archivo -->
+      <div *ngIf="archivoSeleccionado" class="ion-margin-top">
+        <ion-item lines="none">
+          <ion-icon name="document-outline" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>{{ archivoSeleccionado.name }}</h3>
+            <p>{{ (archivoSeleccionado.size / 1024).toFixed(2) }} KB</p>
+          </ion-label>
+        </ion-item>
+      </div>
+
+      <!-- Preview imagen -->
+      <div *ngIf="previewUrl" class="ion-text-center ion-margin-top">
+        <img [src]="previewUrl" style="max-width: 100%; max-height: 250px; border-radius: 8px;" />
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Progreso -->
+  <ion-card *ngIf="subiendo || progreso > 0">
+    <ion-card-content>
+      <p>Progreso: {{ progreso }}%</p>
+      <ion-progress-bar [value]="progreso / 100" color="primary"></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- URL resultado -->
+  <ion-card *ngIf="urlSubida">
+    <ion-card-header>
+      <ion-card-title color="success">¡Subido exitosamente!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-icon name="link-outline" slot="start" color="success"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ urlSubida }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botones acción -->
+  <ion-button
+    expand="block"
+    class="ion-margin-top"
+    [disabled]="!archivoSeleccionado || subiendo"
+    (click)="subirArchivo()">
+    <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+    {{ subiendo ? 'Subiendo...' : 'Subir Archivo' }}
+  </ion-button>
+
+  <ion-button
+    expand="block"
+    fill="clear"
+    color="medium"
+    *ngIf="archivoSeleccionado"
+    (click)="limpiar()">
+    Limpiar
+  </ion-button>
+
+</ion-content>
