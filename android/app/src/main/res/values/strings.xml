@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">app-mobile-hexagonal</string>
+    <string name="title_activity_main">app-mobile-hexagonal</string>
+    <string name="package_name">com.jerfrim.appmobile</string>
+    <string name="custom_url_scheme">com.jerfrim.appmobile</string>
+</resources>
