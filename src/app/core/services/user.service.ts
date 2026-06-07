@@ -5,7 +5,7 @@ import { User, CreateUserDTO, UpdateUserDTO } from '../models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private api = 'http://localhost:8080';
+  private api = 'https://anhgbkuzm5.execute-api.us-east-1.amazonaws.com';
 
   constructor(private http: HttpClient) {}
 

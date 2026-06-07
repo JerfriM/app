@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UploadService {
-  private api = 'http://localhost:8080';
+  private api = 'https://anhgbkuzm5.execute-api.us-east-1.amazonaws.com';
 
   constructor(private http: HttpClient) {}
 
