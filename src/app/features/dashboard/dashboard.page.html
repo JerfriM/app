@@ -22,11 +22,9 @@
 
   <div *ngIf="!cargando">
 
-    <!-- Tarjeta de estadísticas -->
     <ion-card>
       <ion-card-header>
         <ion-card-title>Resumen del Sistema</ion-card-title>
-        
       </ion-card-header>
       <ion-card-content>
         <ion-grid>
@@ -40,7 +38,6 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Menú de navegación -->
     <ion-card>
       <ion-card-header>
         <ion-card-title>Módulos</ion-card-title>
@@ -50,14 +47,22 @@
           <ion-icon slot="start" name="people-outline"></ion-icon>
           Gestión de Usuarios (CRUD)
         </ion-button>
-        <ion-button expand="block" fill="outline" (click)="irAUpload()">
+        
+        <ion-button expand="block" class="ion-margin-bottom" (click)="irAUpload()">
           <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
           Subida de Archivos
         </ion-button>
+
+        
       </ion-card-content>
     </ion-card>
 
-    <!-- Lista de usuarios recientes -->
+
+    <ion-button expand="block" fill="outline" color="warning" (click)="irANotificaciones()">
+  <ion-icon slot="start" name="notifications-outline"></ion-icon>
+  Enviar Notificación
+</ion-button>
+
     <ion-card>
       <ion-card-header>
         <ion-card-title>Usuarios Recientes</ion-card-title>
@@ -76,6 +81,10 @@
         </ion-list>
       </ion-card-content>
     </ion-card>
+    <ion-button expand="block" fill="outline" color="primary" (click)="irANotificaciones()" style="margin-top: 15px;">
+  <ion-icon slot="start" name="notifications-outline"></ion-icon>
+  Módulo de Notificaciones
+</ion-button>
 
   </div>
 

@@ -23,10 +23,22 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+  path: 'features/notifications',
+  loadComponent: () => import('./features/notifications/notifications.page').then(m => m.NotificationsPage),
+  canActivate: [AuthGuard]
+},
+  // Dentro del arreglo de rutas (Routes)
+{
+  path: 'features/notifications',
+  loadComponent: () => import('./features/notifications/notifications.page').then(m => m.NotificationsPage),
+  canActivate: [AuthGuard] // Protegido en la UI
+},
+  {
     path: 'features/upload',
     loadComponent: () => import('./features/upload/upload.page').then(m => m.UploadPage),
     canActivate: [AuthGuard]
   },
+  
 ];
 
 @NgModule({

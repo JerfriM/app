@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Enviar Notificación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Enviar Correo</ion-card-title>
+      <ion-card-subtitle>Via AWS SNS + SQS + Lambda</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item style="border: 1px solid #ccc; border-radius: 8px; margin-bottom: 12px;">
+          <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+          <ion-input type="email" placeholder="Correo destino" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item style="border: 1px solid #ccc; border-radius: 8px; margin-bottom: 12px;">
+          <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+          <ion-input type="text" placeholder="Asunto" [(ngModel)]="subject"></ion-input>
+        </ion-item>
+        <ion-item style="border: 1px solid #ccc; border-radius: 8px; margin-bottom: 12px;">
+          <ion-icon name="chatbubble-outline" slot="start" color="primary"></ion-icon>
+          <ion-textarea placeholder="Mensaje" [(ngModel)]="message" rows="4"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" [disabled]="enviando" (click)="enviarNotificacion()">
+        <ion-icon slot="start" name="send-outline"></ion-icon>
+        {{ enviando ? 'Enviando...' : 'Enviar Notificación' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

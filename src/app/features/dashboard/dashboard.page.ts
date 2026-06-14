@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { forkJoin } from 'rxjs';
 import { UserService } from '../../core/services/user.service';
-import { UploadService } from '../../core/services/upload.service';
 import { User } from '../../core/models/user.model';
 import { Router } from '@angular/router';
 
@@ -31,7 +30,6 @@ export class DashboardPage implements OnInit {
   cargarDatosEnParalelo() {
     this.cargando = true;
 
-    // forkJoin = paralelismo, lanza todas las peticiones al mismo tiempo
     forkJoin({
       usuarios: this.userService.getAll(),
     }).subscribe({
@@ -53,6 +51,12 @@ export class DashboardPage implements OnInit {
   irAUpload() {
     this.router.navigate(['/features/upload']);
   }
+
+  irANotificaciones() {
+  this.router.navigate(['/features/notifications']);
+}
+
+
 
   cerrarSesion() {
     localStorage.removeItem('token');
